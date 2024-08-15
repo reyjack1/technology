@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolution Technology</title>
+    <link rel="icon" href="caminho/para/seu-icone.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="jquery.js"></script> <!-- Certifique-se de que este caminho está correto -->
+    <meta name="description" content="Evolution Technology - Soluções tecnológicas para a sua empresa.">
+    <meta name="keywords" content="tecnologia, infraestrutura, TI, soluções empresariais">
+</head>
+<body>
+
+<header>
+    <div class="barra-superior">
+        <ul class="nav-links">
+            <li><a href="#">Início</a></li>
+            <li><a href="#">Sobre</a></li>
+            <li class="dropdown">
+                <a href="#">Serviços</a>
+                <ul class="dropdown-content">
+                    <li><a href="#">Consultoria em TI</a></li>
+                    <li><a href="#">Infraestrutura de Redes</a></li>
+                    <li><a href="#">Segurança da Informação</a></li>
+                    <li><a href="#">Suporte Técnico</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Portfólio</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+        <div class="menu-toggle">
+            <div class="hamburger"></div>
+        </div>
+    </div><!--barra-superior-->
+</header>
+
+<div class="imagem">
+    <div class="slides">
+        <div class="slide" style="background-image: url('img/banner.png');"></div>
+        <div class="slide" style="background-image: url('img/banner2.png');"></div>
+        <div class="slide" style="background-image: url('img/banner3.png');"></div>
+    </div>
+    <div class="info-box">
+        <img src="img/logo.png" alt="Logo Evolution Technology" style="width: 200px;">
+    </div>
+</div><!--imagem-->
+
+<article>
+    <section class="quemsomos">
+        <h2>O que fazemos?</h2>
+        <p>A Evolution Technology tem como objetivo manter as operações da sua empresa eficientes e práticas, garantindo uma infraestrutura operacional e de TI de maneira satisfatória e eficaz.</p>
+        <a href="sua_pagina.html" target="_blank" class="saiba-mais-btn">Saiba Mais</a>
+    </section><!--quemsomos-->
+
+    <section class="nossos-servicos">
+        <h2>Nossos Serviços</h2>
+        <div class="servico">
+            <h3>Consultoria em TI</h3>
+            <p>Oferecemos consultoria especializada para otimizar os recursos tecnológicos da sua empresa.</p>
+        </div>
+        <div class="servico">
+            <h3>Infraestrutura de Redes</h3>
+            <p>Projetos de redes robustos e escaláveis para garantir a conectividade contínua.</p>
+        </div>
+        <div class="servico">
+            <h3>Segurança da Informação</h3>
+            <p>Proteja os dados sensíveis da sua empresa com nossas soluções de segurança.</p>
+        </div>
+        <div class="servico">
+            <h3>Suporte Técnico</h3>
+            <p>Suporte técnico especializado para resolver problemas e melhorar a eficiência.</p>
+        </div>
+    </section><!--nossos-servicos-->
+
+    <section class="portfolio">
+        <h2>Portfólio</h2>
+        <p>Veja alguns dos nossos projetos recentes e como ajudamos empresas a alcançar seus objetivos tecnológicos.</p>
+        <a href="portfolio.html" target="_blank" class="saiba-mais-btn">Ver Portfólio</a>
+    </section><!--portfolio-->
+
+    <section class="blog">
+        <h2>Blog</h2>
+        <p>Fique por dentro das últimas tendências e novidades no mundo da tecnologia.</p>
+        <a href="blog.html" target="_blank" class="saiba-mais-btn">Visite nosso Blog</a>
+    </section><!--blog-->
+
+    <section class="contato">
+        <h2>Contato</h2>
+        <p>Entre em contato conosco para saber mais sobre como podemos ajudar sua empresa a crescer com tecnologia.</p>
+        <a href="contato.html" target="_blank" class="saiba-mais-btn">Fale Conosco</a>
+    </section><!--contato-->
+</article>
+
+<script>
+    $(document).ready(function() {
+        let currentIndex = 0;
+        const slides = $('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.hide();
+            slides.eq(index).fadeIn();
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            showSlide(currentIndex);
+        }
+
+        // Mostrar o primeiro slide
+        showSlide(currentIndex);
+
+        // Mudar slide a cada 3 segundos
+        setInterval(nextSlide, 3000);
+
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    });
+</script>
+</body>
+</html>
