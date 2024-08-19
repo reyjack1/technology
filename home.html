@@ -51,28 +51,46 @@
     <section class="quemsomos">
         <h2>O que fazemos?</h2>
         <p>A Evolution Technology tem como objetivo manter as operações da sua empresa eficientes e práticas, garantindo uma infraestrutura operacional e de TI de maneira satisfatória e eficaz.</p>
+        <ul>
+            <li>Diagnóstico completo da infraestrutura de TI.</li>
+            <li>Implementação de soluções personalizadas.</li>
+            <li>Proposta de soluções tecnológicas adequadas ao orçamento</li>
+            <li>Monitoramento contínuo para garantir a eficácia das soluções implementadas</li>
+            <li>Apoio na implementação de novas tecnologias</li>
+        </ul>
         <a href="sua_pagina.html" target="_blank" class="saiba-mais-btn">Saiba Mais</a>
-    </section><!--quemsomos-->
+    </section>
 
     <section class="nossos-servicos">
         <h2>Nossos Serviços</h2>
-        <div class="servico">
-            <h3>Consultoria em TI</h3>
-            <p>Oferecemos consultoria especializada para otimizar os recursos tecnológicos da sua empresa.</p>
+        <div class="servico-container">
+            <div class="servico">
+                <h3>Projetos</h3>
+                <img src="img/projetos.png" alt="Projetos">
+                <p>Oferecemos consultoria especializada para otimizar os recursos tecnológicos da sua empresa.</p>
+                <a href="consultoria.html" target="_blank" class="saiba-mais-btn">Saiba Mais</a>
+            </div>
+            <div class="servico">
+                <h3>Serviços T.I</h3>
+                <img src="img/serviços.png" alt="Serviços T.I">
+                <p>Projetos de T.I robustos e escaláveis para garantir uma eficiência contínua.</p>
+                <a href="infraestrutura.html" target="_blank" class="saiba-mais-btn">Saiba Mais</a>
+            </div>
+            <div class="servico">
+                <h3>Plano de Negócios</h3>
+                <img src="img/plano.png" alt="Plano de Negócios">
+                <p>Buscamos entender a realidade do seu negócio analisando a concorrência no mercado. Analisamos novas oportunidades para atingir seus objetivos, suprindo todas as necessidades corporativas.</p>
+                <a href="seguranca.html" target="_blank" class="saiba-mais-btn">Saiba Mais</a>
+            </div>
+            <div class="servico">
+                <h3>Infraestrutura</h3>
+                <img src="img/infraestrutura.png" alt="Infraestrutura">
+                <p>Priorizamos nossos projetos na mudança e melhoria, criando espaços que proporcionem qualidade de vida, conforto, elegância e segurança.</p>
+                <p>Oferecemos todo o suporte necessário, com agilidade, praticidade e eficiência.</p>
+                <a href="suporte.html" target="_blank" class="saiba-mais-btn">Saiba Mais</a>
+            </div>
         </div>
-        <div class="servico">
-            <h3>Infraestrutura de Redes</h3>
-            <p>Projetos de redes robustos e escaláveis para garantir a conectividade contínua.</p>
-        </div>
-        <div class="servico">
-            <h3>Segurança da Informação</h3>
-            <p>Proteja os dados sensíveis da sua empresa com nossas soluções de segurança.</p>
-        </div>
-        <div class="servico">
-            <h3>Suporte Técnico</h3>
-            <p>Suporte técnico especializado para resolver problemas e melhorar a eficiência.</p>
-        </div>
-    </section><!--nossos-servicos-->
+    </section>
 
     <section class="portfolio">
         <h2>Portfólio</h2>
@@ -95,6 +113,7 @@
 
 <script>
     $(document).ready(function() {
+        // Controle de Slides de Imagem
         let currentIndex = 0;
         const slides = $('.slide');
         const totalSlides = slides.length;
@@ -115,10 +134,60 @@
         // Mudar slide a cada 3 segundos
         setInterval(nextSlide, 3000);
 
+        // Menu Toggle
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             document.querySelector('.nav-links').classList.toggle('active');
         });
+
+        // Deslize dos Serviços em Mobile
+        const container = document.querySelector('.servico-container');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        container.addEventListener('mousedown', (e) => {
+            isDown = true;
+            container.classList.add('active');
+            startX = e.pageX - container.offsetLeft;
+            scrollLeft = container.scrollLeft;
+        });
+
+        container.addEventListener('mouseleave', () => {
+            isDown = false;
+            container.classList.remove('active');
+        });
+
+        container.addEventListener('mouseup', () => {
+            isDown = false;
+            container.classList.remove('active');
+        });
+
+        container.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - container.offsetLeft;
+            const walk = (x - startX) * 3; // Velocidade de deslize
+            container.scrollLeft = scrollLeft - walk;
+        });
+
+        container.addEventListener('touchstart', (e) => {
+            isDown = true;
+            startX = e.touches[0].pageX - container.offsetLeft;
+            scrollLeft = container.scrollLeft;
+        });
+
+        container.addEventListener('touchend', () => {
+            isDown = false;
+        });
+
+        container.addEventListener('touchmove', (e) => {
+            if (!isDown) return;
+            const x = e.touches[0].pageX - container.offsetLeft;
+            const walk = (x - startX) * 3; // Velocidade de deslize
+            container.scrollLeft = scrollLeft - walk;
+        });
     });
 </script>
+
 </body>
 </html>
